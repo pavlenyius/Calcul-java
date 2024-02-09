@@ -1,18 +1,25 @@
+import java.util.Scanner;
+
 public class Calcul {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
         try {
-            String inputData = "10 / 5";
-            System.out.println("Проводим математические вычисления невиданной сложности: " + inputData);
+            System.out.println("Введите выражение в формате '((Число a) операция (число b))': ");
+            String inputData = scanner.nextLine();
+            System.out.println("Вводные данные: " + inputData);
             System.out.println("Результат вычислений:  " + (calc(inputData)));
             System.out.println("____________________");
             System.out.println("Отличный результат!");
+
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage()); 
+        } finally {
+            scanner.close();
         }
     }
 
     public static String calc(String input) throws Exception {
-        String[] parts = input.split(" ");
+        String[] parts = input.split(" "); 
         if (parts.length != 3) {
             throw new Exception("Неверный формат ввода");
         }
